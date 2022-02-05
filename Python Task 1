@@ -1,0 +1,43 @@
+#1A)
+X = [[1,2,3],[4,5,6],[7,8,9]]
+Y = [[10,11,12,13],[14,15,16,17],[18,19,20,21]]
+result = [[0,0,0,0],[0,0,0,0],[0,0,0,0]]
+for i in range(len(X)):
+   for j in range(len(Y[0])):
+       for k in range(len(Y)):
+           result[i][j] += X[i][k] * Y[k][j]
+for r in result:
+   print(r)
+
+#B)
+N = 4
+def transpose(A, B):
+    for i in range(N):
+        for j in range(N):
+            B[i][j] = A[j][i]
+A = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]
+B = A[:][:]
+transpose(A, B)
+print("Result matrix is")
+for i in range(N):
+    for j in range(N):
+        print(B[i][j], " ", end='')
+    print()
+#2A)
+def removeDuplicates(lst):
+    return [t for t in (set(tuple(i) for i in lst))]
+lst = [(9,9),(11,17),(9,9),(6,8)]
+print(removeDuplicates(lst))
+
+#B)
+func([('car', 500), ('bike', 200), ('truck', 300)])
+
+def divide(lst, left_sum, right_sum):
+    if not lst:
+        return left_sum == right_sum
+
+    obj, value = lst[0]
+    return divide(lst[1:],left_sum + value, right_sum) or divide(lst[1:],left_sum, right_sum+value)
+
+assert divide([('car', 500), ('bike', 200), ('truck', 300)],0,0)
+assert not divide([('car', 500), ('bike', 200), ('truck', 301)],0,0)
